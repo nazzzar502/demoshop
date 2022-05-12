@@ -4,6 +4,7 @@
 
     let name;
     let description;
+
     let imageSource;
 
     function uniqueId() {
