@@ -23,7 +23,7 @@
                         <p>{item.description}</p>
                     </div>
                     <div class="w3-container" style="max-height:200px">
-                        <p>{item.id}</p>
+                        <a class="w3-button" href="#/product/{item.id}">Open</a>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,9 @@
 	import Products from "./shared/Products.svelte";
 	import CreateProduct from "./create/CreateProduct.svelte";
 	import Footer from "./shared/Footer.svelte";
+	import Router from "svelte-spa-router";
+	import routes from "./routes.js";
+
 	let tabType;
 	//tabs
 	let tabs = [`Current products`, `Create new product`, `Edit`]; //Edit will be opend when i click on product
@@ -21,12 +24,11 @@
 
 <main>
 	<div class="row"><Header /></div>
-	<i />
 	<Sidebar {tabs} on:changeTab={changeTab} />
 	<div class="content">
 		<!--Move style from tag to some class-->
 		{#if activeTab === "Current products"}
-			<Products {products} />
+			<Router {routes} />
 		{:else}
 			<CreateProduct {products} />
 		{/if}
