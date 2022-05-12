@@ -35,8 +35,14 @@
         <input type="text" id="fname" name="fname" bind:value={name} /><br /><br
         />
         <label for="desc">Product description:</label>
-        <input type="text" id="desc" name="desc" bind:value={description} /><br
-        /><br />
+        <textarea
+            class="w3-input w3-border"
+            style="resize:none"
+            id="desc"
+            name="desc"
+            bind:value={description}
+        />
+        <br /><br />
         <label for="imgsrc">imageSource</label>
         <input
             type="file"

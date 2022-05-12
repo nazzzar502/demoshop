@@ -2,19 +2,38 @@
     import { box } from "../store.js";
     export let params = {};
     const id = parseInt(params.id, 10);
+    let placeholder = "https://www.w3schools.com/w3css/img_lights.jpg";
 </script>
 
 <body>
-    <h1>{id}</h1>
     {#if $box}
         {#each $box as item (item.id)}
             {#if item.id === id}
-                <h1>{item.name}</h1>
-                <h1>{item.description}</h1>
+                <div class="w3-row">
+                    <div class="w3-col m4 l3">
+                        <img
+                            class="w3-image"
+                            src={placeholder}
+                            alt="TestImage"
+                        />
+                    </div>
+                    <div class="w3-col m8 l9">
+                        <header class="w3-container w3-grey">
+                            <h3>{item.name}</h3>
+                        </header>
+
+                        <div class="w3-container">
+                            <p>{item.description}</p>
+                        </div>
+                    </div>
+                </div>
             {/if}
         {/each}
     {/if}
 </body>
 
 <style>
+    div {
+        margin: 2px;
+    }
 </style>
