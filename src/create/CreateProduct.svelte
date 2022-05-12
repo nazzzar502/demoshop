@@ -4,8 +4,9 @@
 
     let name;
     let description;
-
     let imageSource;
+
+    let testvalue;
 
     function uniqueId() {
         return Date.now();
