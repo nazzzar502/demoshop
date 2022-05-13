@@ -25,6 +25,7 @@
                         <div class="w3-container">
                             <p>{item.description}</p>
                         </div>
+                        <a class="w3-button" href="/">Back</a>
                     </div>
                 </div>
             {/if}

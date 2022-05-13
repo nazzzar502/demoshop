@@ -10,7 +10,7 @@
 	let tabType;
 	//tabs
 	let tabs = [`Current products`, `Create new product`, `Edit`]; //Edit will be opend when i click on product
-	let activeTab = `Create new product`;
+	let activeTab = `Current products`;
 	const changeTab = (e) => {
 		tabType = e.detail;
 		activeTab = tabType;
