@@ -12,25 +12,23 @@
         return Date.now();
     }
 
-    const storeProduct = () => {
-        if (name || description || imageSource) {
-            const product = {
-                name,
-                description,
-                imageSource,
-                id: uniqueId(),
-            };
+    const createProduct = () => {
+        const product = {
+            name,
+            description,
+            imageSource,
+            id: uniqueId(),
+        };
 
-            products.push(product);
-            console.log(products);
+        products.push(product);
+        console.log(products);
 
-            box.update((n) => products);
-        }
+        box.update((n) => products);
     };
 </script>
 
 <body>
-    <form on:submit|preventDefault={storeProduct}>
+    <form on:submit|preventDefault={createProduct}>
         <label for="fname">Product name:</label>
         <input type="text" id="fname" name="fname" bind:value={name} /><br /><br
         />

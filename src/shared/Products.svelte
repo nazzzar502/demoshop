@@ -1,6 +1,6 @@
 <script>
     import { box } from "../store.js";
-    import { onDestroy } from "svelte";
+    import { onDestroy, onMount } from "svelte";
     let placeholder = "https://www.w3schools.com/w3css/img_lights.jpg";
 </script>
 
@@ -18,13 +18,10 @@
                         src={placeholder}
                         alt="TestImage"
                     />
-                    <div class="w3-container" style="max-height:200px">
-                        <p>{item.description}</p>
-                    </div>
+
                     <div class="w3-container" style="max-height:200px">
                         <a class="w3-button" href="#/product/{item.id}">Open</a>
                     </div>
-                    
                 </div>
             </div>
         {/each}

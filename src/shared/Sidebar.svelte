@@ -1,9 +1,10 @@
 <script>
-    let tabType;
-
     import { createEventDispatcher } from "svelte";
-
+    import { onMount } from "svelte";
     export let tabs;
+
+    let tabType;
+    let display = false;
 
     const dispatch = createEventDispatcher();
 
@@ -20,7 +21,7 @@
         document.getElementById("sidebar").style.display = "none";
     };
 
-    /*const toggleSidebar = () => {
+    const toggleSidebar = () => {
         if (display === true) {
             openSidebar();
             display = false;
@@ -28,11 +29,15 @@
             closeSidebar();
             display = true;
         }
-    };*/
+    };
 </script>
 
 <div class="w3-container">
-    <div class="w3-sidebar w3-bar-block w3-border-right" id="sidebar">
+    <div
+        class="w3-sidebar w3-bar-block w3-border-right"
+        id="sidebar"
+        style="display:none;"
+    >
         {#each tabs as item}
             <radio
                 class="w3-bar-item w3-button"
@@ -44,22 +49,14 @@
         {:else}
             <p>No tabs</p>
         {/each}
-
-        <i
-            class="fa fa-arrow-left "
-            style="position:sticky;top: 10px;margin-top:2px"
-            alt="Toggle menu"
-            on:click={() => {
-                closeSidebar();
-            }}
-        />
     </div>
 </div>
 
 <i
+    id="toggle"
     class="fa fa-arrow-right"
     on:click={() => {
-        openSidebar();
+        toggleSidebar();
     }}
     alt="Toggle menu"
 />
