@@ -7,7 +7,7 @@
 
     let product;
 
-    let present = true;
+    let removed = false;
     let update = false;
     //updating product from store when component is injected in DOM
     onMount(() => {
@@ -20,7 +20,7 @@
         box.update((products) => {
             return products.filter((product) => product.id != id);
         });
-        present = false;
+        removed = true;
     };
 
     const updateProduct = () => {
@@ -33,7 +33,7 @@
     };
 </script>
 
-{#if !present}
+{#if removed}
     <div class="w3-panel w3-red">
         <h3>Product removed!</h3>
     </div>
@@ -43,7 +43,7 @@
         <h3>Product updated!</h3>
     </div>
 {/if}
-{#if present}
+{#if !removed}
     {#if product}
         <body>
             <form on:submit|preventDefault>

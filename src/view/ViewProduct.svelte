@@ -37,7 +37,8 @@
         <a class="w3-button" href="#/product/edit/{product.id}">Edit</a>
         <a class="w3-button" href="/#">Back</a>
     {:else}
-        <h1>No product</h1>
+        <h1>There are no such products</h1>
+        <a class="w3-button" href="/#">Back</a>
     {/if}
 {/if}
 
