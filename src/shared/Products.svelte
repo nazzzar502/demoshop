@@ -8,20 +8,17 @@
     {#if $box}
         {#each $box as item (item.id)}
             <div class="w3-col s4 w3-center">
-                <div class="w3-card-2" style="margin:5px;">
+                <div class="w3-card-2">
                     <header class="w3-container w3-grey">
                         <h3>{item.name}</h3>
                     </header>
-                    <img
-                        class="w3-image"
-                        style="width:100%;max-width:200px;margin:2px"
-                        src={placeholder}
-                        alt="TestImage"
-                    />
-
-                    <div class="w3-container" style="max-height:200px">
-                        <a class="w3-button" href="#/product/{item.id}">Open</a>
-                    </div>
+                    <a href="#/product/{item.id}">
+                        <img
+                            class="w3-image"
+                            src={placeholder}
+                            alt="TestImage"
+                        /></a
+                    >
                 </div>
             </div>
         {/each}
@@ -29,4 +26,13 @@
 </body>
 
 <style>
+    .w3-col {
+        padding: 3px;
+        max-width: 400px;
+        height: auto;
+        padding: 10px;
+    }
+    h3 {
+        color: #e3e8eb;
+    }
 </style>

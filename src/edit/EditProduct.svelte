@@ -34,12 +34,12 @@
 </script>
 
 {#if removed}
-    <div class="w3-panel w3-red">
+    <div class="w3-panel w3-grey">
         <h3>Product removed!</h3>
     </div>
 {/if}
 {#if update}
-    <div class="w3-panel w3-green">
+    <div class="w3-panel w3-grey">
         <h3>Product updated!</h3>
     </div>
 {/if}
@@ -57,7 +57,6 @@
                 <label for="desc">Product description:</label>
                 <textarea
                     class="w3-input w3-border"
-                    style="resize:none"
                     id="desc"
                     name="desc"
                     bind:value={product.description}
@@ -70,12 +69,18 @@
                     name="imgsrc"
                     bind:value={product.imageSource}
                 /><br /><br />
-                <div>
-                    <button on:click={updateProduct}>Submit</button>
-                    <button on:click={deleteProduct}>Delete</button>
+                <div class="w3-bar">
+                    <a class="w3-button" id="1" on:click={updateProduct}
+                        >Submit</a
+                    >
+                    <a
+                        class="w3-button"
+                        id="cart-button"
+                        on:click={deleteProduct}>Delete</a
+                    >
+                    <a class="w3-button" href="/#{product.id}">Back</a>
                 </div>
             </form>
-            <a class="w3-button" href="/#{product.id}">Back</a>
         </body>
     {/if}
 {:else}
@@ -83,7 +88,44 @@
 {/if}
 
 <style>
-    div {
-        margin: 2px;
+    form {
+        max-width: 400px;
+        width: auto;
+        margin-left: 25%;
+    }
+
+    h3 {
+        color: #e3e8eb;
+    }
+
+    .w3-bar {
+        background-color: #474745;
+        margin: 0 auto;
+        max-width: auto;
+        width: 100%;
+        height: auto;
+    }
+    .w3-bar > a {
+        display: inline-block;
+        color: rgb(230, 218, 218);
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        padding: 8px 24px;
+    }
+
+    /* Change the link color to #111 (black) on hover */
+    .w3-bar > a:hover {
+        background-color: rgb(97, 89, 113);
+        border-radius: 1px;
+    }
+    #cart-button {
+        background-color: #e3e8eb;
+        color: #474745;
+    }
+    textarea {
+        height: 250px;
+
+        resize: none;
     }
 </style>

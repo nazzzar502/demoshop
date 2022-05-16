@@ -14,7 +14,7 @@
     };
 
     const openSidebar = () => {
-        document.getElementById("sidebar").style.display = "block";
+        document.getElementById("sidebar").style.display = "flex";
     };
 
     const closeSidebar = () => {

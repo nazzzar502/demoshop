@@ -1,43 +1,59 @@
 <script>
 	import Header from "./shared/Header.svelte";
-	import Sidebar from "./shared/Sidebar.svelte";
-	import Products from "./shared/Products.svelte";
-	import CreateProduct from "./create/CreateProduct.svelte";
-	import Footer from "./shared/Footer.svelte";
+
 	import Router from "svelte-spa-router";
 	import routes from "./routes.js";
 
 	let tabType;
 	//tabs
-	let tabs = [`Current products`, `Create new product`]; //Edit will be opend when i click on product
-	let activeTab = `Current products`;
-	const changeTab = (e) => {
-		tabType = e.detail;
-		activeTab = tabType;
-		console.log(tabType);
-	};
+
 	//products
-	let products = [];
+
 	//routng implementation
 	//Checkout stores
 </script>
 
 <main>
 	<div class="row"><Header /></div>
-	<Sidebar {tabs} on:changeTab={changeTab} />
-	<div class="content">
-		<!--Move style from tag to some class-->
-		{#if activeTab === "Current products"}
-			<Router {routes} />
-		{:else}
-			<CreateProduct {products} />
-		{/if}
+	<div class="w3-container">
+		<a href="#/" onclick="">
+			<div
+				class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding"
+			>
+				Products
+			</div>
+		</a>
+		<a href="#/create" onclick="">
+			<div
+				class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding"
+			>
+				CreateProduct
+			</div>
+		</a>
+		<a href="#/cart" onclick="">
+			<div
+				class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding"
+			>
+				Cart
+			</div>
+		</a>
+	</div>
+
+	<div class="w3-container">
+		<Router {routes} />
 	</div>
 </main>
 
 <style>
-	.content {
-		margin-left: 15%;
-		margin-right: 10%;
+	.w3-container {
+		margin: 0 auto;
+		max-width: 960px;
+		width: 100%;
+		height: auto;
+
+		margin: 0 auto;
+		max-width: 960px;
+		width: 100%;
+		height: auto;
 	}
 </style>

@@ -1,7 +1,7 @@
 <script>
     import { box } from "../store.js";
-    export let products;
-
+    //export let products;
+    let products = [];
     let name;
     let description;
     let imageSource;
@@ -19,11 +19,10 @@
             imageSource,
             id: uniqueId(),
         };
-
         products.push(product);
-        console.log(products);
 
         box.update((n) => products);
+        console.log($box);
     };
 </script>
 
@@ -35,26 +34,29 @@
         <label for="desc">Product description:</label>
         <textarea
             class="w3-input w3-border"
-            style="resize:none"
             id="desc"
             name="desc"
             bind:value={description}
         />
-        <br /><br />
-        <label for="imgsrc">imageSource</label>
+        <br />
+        <label for="imgsrc">Image source:</label>
         <input
             type="file"
             id="imgsrc"
             name="imgsrc"
             bind:value={imageSource}
         /><br /><br />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Create" />
     </form>
 </body>
 
 <style>
     form {
-        margin-left: 15%;
-        margin-right: 10%;
+        max-width: 400px;
+        width: auto;
+        margin-left: 25%;
+    }
+    textarea {
+        resize: none;
     }
 </style>
