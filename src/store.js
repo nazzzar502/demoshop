@@ -48,6 +48,7 @@ export const box = writable([
     },
 ]);
 
+export const users = writable([]);
 
 function Cart(id, userId, cartPoducts) {
     id = id;

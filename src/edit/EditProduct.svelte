@@ -8,7 +8,7 @@
     let product;
 
     let removed = false;
-    let update = false;
+    let updated = false;
     //updating product from store when component is injected in DOM
     onMount(() => {
         product = $box.find((item) => item.id === id);
@@ -29,7 +29,7 @@
             products[itemIndex] = product;
             return products;
         });
-        update = true;
+        updated = true;
     };
 </script>
 
@@ -38,7 +38,7 @@
         <h3>Product removed!</h3>
     </div>
 {/if}
-{#if update}
+{#if updated}
     <div class="w3-panel w3-grey">
         <h3>Product updated!</h3>
     </div>

@@ -1,6 +1,6 @@
 <script>
 	import Header from "./shared/Header.svelte";
-
+	import { fade } from "svelte/transition";
 	import Router from "svelte-spa-router";
 	import routes from "./routes.js";
 

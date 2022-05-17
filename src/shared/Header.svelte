@@ -4,6 +4,7 @@
 <header>
     <div class="w3-bar">
         <a href="/#" class="w3-bar-item w3-button">Home</a>
+        <a href="/#/user/create" class="w3-bar-item w3-button">User</a>
     </div>
 </header>
 
