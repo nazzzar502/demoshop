@@ -114,12 +114,6 @@
         if (checked) {
             let user = generateUser(initialValues);
 
-            const hashedPassword = bcrypt.hashSync(
-                values.password,
-                bcrypt.genSaltSync()
-            );
-            console.log(hashedPassword);
-
             if (!findUser(user)) {
                 buffer.push(user);
                 users.update((p) => buffer);

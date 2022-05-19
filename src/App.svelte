@@ -1,44 +1,16 @@
 <script>
 	import Header from "./shared/Header.svelte";
-	import { fade } from "svelte/transition";
-	import Router from "svelte-spa-router";
-	import routes from "./routes.js";
+	import { Route, Router } from "svelte-router-spa";
 
+	import { routes } from "./routes";
+	import { onDestroy, onMount } from "svelte";
+	import NavBar from "./shared/NavBar.svelte";
 	let tabType;
-	//tabs
-
-	//products
-
-	//routng implementation
-	//Checkout stores
 </script>
 
 <main>
 	<div class="row"><Header /></div>
-	<div class="w3-container">
-		<a href="#/" onclick="">
-			<div
-				class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding"
-			>
-				Products
-			</div>
-		</a>
-		<a href="#/create" onclick="">
-			<div
-				class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding"
-			>
-				CreateProduct
-			</div>
-		</a>
-		<a href="#/cart" onclick="">
-			<div
-				class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding"
-			>
-				Cart
-			</div>
-		</a>
-	</div>
-
+	<div class="row"><NavBar /></div>
 	<div class="w3-container">
 		<Router {routes} />
 	</div>

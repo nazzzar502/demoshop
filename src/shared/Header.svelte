@@ -4,14 +4,14 @@
 
 <header>
     <div class="w3-bar">
-        <a href="/#" class="w3-bar-item w3-button">Home</a>
+        <a href="/products/view" class="w3-bar-item w3-button">Home</a>
         {#if $currentUser && $currentUser.email}
-            <a href="/#/user/{$currentUser.id}" class="w3-bar-item w3-button"
+            <a href="/user/{$currentUser.id}" class="w3-bar-item w3-button"
                 >{$currentUser.email}</a
             >
         {:else}
-            <a href="/#/login" class="w3-bar-item w3-button">Login</a>
-            <a href="/#/user/create" class="w3-bar-item w3-button">Sign in</a>
+            <a href="/login" class="w3-bar-item w3-button">Login</a>
+            <a href="/register" class="w3-bar-item w3-button">Sign in</a>
         {/if}
     </div>
 </header>

@@ -1,9 +1,10 @@
 <script>
-    import { currentUser, users } from "../store.js";
+    import { currentUser, users, session } from "../store.js";
     import { onDestroy, onMount } from "svelte";
-    import { pop } from "svelte-spa-router";
-    export let params = {};
-    const id = parseInt(params.id, 10);
+
+    export let currentRoute;
+    let params = currentRoute;
+    const id = parseInt(currentRoute.namedParams.id, 10);
     let placeHolder = "https://www.w3schools.com/w3css/img_lights.jpg";
 
     let user;
@@ -14,10 +15,8 @@
         user = $users.find((preson) => preson.id === id);
     });
     const logOut = () => {
-        currentUser.update((n) => {
-            n = {};
-        });
-        console.log("test");
+        $currentUser = {};
+        $session = false;
         return true;
     };
 </script>
@@ -53,20 +52,20 @@
         </div>
         <div class="w3-bar">
             <a class="w3-button" href="#/user/edit/{user.id}">Edit</a>
-            <button
+            <a
                 class="w3-button"
                 id="cart-button"
+                href="/products/view"
                 on:click={() => {
                     if (logOut()) {
-                        window.location.href = `/#`;
                     }
-                }}>Log out</button
+                }}>Log out</a
             >
-            <a class="w3-button" href="/#">Back</a>
+            <a class="w3-button" href="/products/view">Back</a>
         </div>
     {:else}
         <h1>There are no such users</h1>
-        <a class="w3-button" href="/#">Back</a>
+        <a class="w3-button" href="/products/view">Back</a>
     {/if}
 {/if}
 

@@ -1,6 +1,9 @@
 <script>
     import { box } from "../store.js";
     import { onDestroy, onMount } from "svelte";
+    import { Router } from "svelte-router-spa";
+    import { Navigate } from "svelte-router-spa";
+
     let placeholder = "https://www.w3schools.com/w3css/img_lights.jpg";
 </script>
 
@@ -12,13 +15,13 @@
                     <header class="w3-container w3-grey">
                         <h3>{item.name}</h3>
                     </header>
-                    <a href="#/product/{item.id}">
+                    <Navigate to="/products/{item.id}">
                         <img
                             class="w3-image"
                             src={placeholder}
                             alt="TestImage"
-                        /></a
-                    >
+                        />
+                    </Navigate>
                 </div>
             </div>
         {/each}

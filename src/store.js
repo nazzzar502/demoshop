@@ -2,9 +2,6 @@ import { writable } from 'svelte/store';
 
 
 
-function uniqueId() {
-    return Date.now();
-}
 
 export const cartProducts = writable([]);
 
@@ -60,6 +57,7 @@ export const users = writable([
 ]);
 
 export const currentUser = writable({});
+export const session = writable(false);
 
 function Cart(id, userId, cartPoducts) {
     id = id;

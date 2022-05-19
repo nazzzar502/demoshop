@@ -8,24 +8,86 @@ import EditUser from "./edit/EditUser.svelte";
 import ViewUser from "./view/ViewUser.svelte";
 import Cart from "./shared/Cart.svelte";
 import Login from "./shared/Login.svelte";
+import PublicLayout from "./PublicLayout.svelte"
 import Notfound from "./shared/Notfound.svelte";
+import { get, writable } from 'svelte/store';
+import { currentUser, session } from "./store.js";
+import { test } from "./store.js";
 
+
+function userIsAdmin() {
+    let t = get(session);
+    console.log(`value is` + t);
+    if (t) {
+        return t;
+    }
+    return false;
+
+}
 //Route dictionary
-export default {
-    '/': Products,
-    '/create': CreateProduct,
-    '/product/:id': ViewProduct,
-    '/product/edit/:id': EditProduct,
-    '/cart': Cart,
-    '/login': Login,
-    '/user/create': CreateUser,
-    '/user/:id': ViewUser,
-    '/user/edit/:id': EditUser,
-    '*': Notfound
-}
 
-export const routes = {
-    '/book/:id': wrap({
-        asyncComponent: () => import('./Book.svelte')
-    })
-}
+const routes = [
+    {
+        name: '/',
+        component: PublicLayout,
+    },
+    {
+        name: 'cart',
+        component: Cart,
+    },
+    {
+        name: 'login',
+        component: Login,
+    },
+
+    {
+        name: 'register',
+        component: CreateUser
+    },
+
+    {
+        name: '/user',
+        component: '',
+        onlyIf: { guard: userIsAdmin, redirect: '/login' },
+        nestedRoutes: [{
+            name: `:id`,
+            component: ViewUser
+        }, {
+            name: `edit/:id`,
+            component: EditUser
+        }]
+    },
+
+    {
+        name: 'products',
+        component: ``,
+        nestedRoutes: [
+            {
+                name: 'view',
+                component: Products,
+                nestedRoutes: []
+            },
+            {
+                name: `:id`,
+                component: ViewProduct
+            },
+        ]
+    },
+
+    {
+        name: `product`,
+        component: ``,
+        onlyIf: { guard: userIsAdmin, redirect: '/login' },
+        nestedRoutes: [
+            {
+                name: `create`,
+                component: CreateProduct
+            }, {
+                name: `edit/:id`,
+                component: EditProduct
+            }]
+
+    }
+]
+
+export { routes }

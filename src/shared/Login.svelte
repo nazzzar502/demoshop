@@ -1,10 +1,11 @@
 <script>
-    import { users, currentUser } from "../store.js";
+    import { users, currentUser, session } from "../store.js";
     // import { Sveltik, Form, Field, ErrorMessage } from "sveltik";
-    //import { onMount } from "svelte";
+    import { onMount } from "svelte";
     let email;
     let password;
     let message = ``;
+
     const showContent = (id) => {
         document.getElementById(id).type = "text";
         setTimeout(() => {
@@ -17,11 +18,14 @@
 
         if (itemIndex && itemIndex.password === password) {
             $currentUser = itemIndex;
+            $session = true;
+            //console.log($currentUser);
             console.log($currentUser);
             return true;
         }
 
         message = `Wrong email or password`;
+
         return false;
     };
 </script>
@@ -49,19 +53,24 @@
             />
         </div>
         <div class="w3-container">
-            <button
-                type="submit"
+            <a
+                class="w3-button"
                 on:click={() => {
                     if (findUser(email)) {
-                        window.location.href = "/#";
                     }
-                }}>Sign In</button
+                }}
+                href="/products/view">Log In</a
             >
         </div>
     </form>
 </body>
 
 <style>
+    .w3-button {
+        background-color: #e3e8eb;
+        color: #474745;
+        text-decoration: none;
+    }
     i {
         padding: 10px;
     }
