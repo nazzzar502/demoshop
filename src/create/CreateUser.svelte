@@ -1,12 +1,12 @@
 <script>
     import { users } from "../store.js";
     import { Sveltik, Form, Field, ErrorMessage } from "sveltik";
+    import { onMount } from "svelte";
 
-    let checked = false;
-    let admin = false;
     let buffer = [];
-
-    let user = new Object();
+    let admin = false;
+    let checked = false;
+    let message;
 
     let initialValues = {
         name: "",
@@ -14,7 +14,7 @@
         password: "",
         check: "",
     };
-
+    //validation function
     let validate = (values) => {
         const errors = {};
         //user name validation
@@ -54,10 +54,26 @@
         } else if (values.check != values.password) {
             errors.check = "Password didn`t match";
         }
-        console.log(user);
+
+        //if all necssary values from inputs are validated we will update initial values
+        if (
+            !errors.name &&
+            !errors.email &&
+            !errors.password &&
+            !errors.check
+        ) {
+            initialValues.name = values.name;
+            initialValues.email = values.email;
+            initialValues.password = values.password;
+            initialValues.check = values.check;
+            checked = true;
+        } else {
+            checked = false;
+        }
         return errors;
     };
 
+    //function for showing password values, used  with icons
     const showContent = (id) => {
         document.getElementById(id).type = "text";
         setTimeout(() => {
@@ -68,17 +84,63 @@
     function uniqueId() {
         return Date.now();
     }
+    //Hashing password using bcrypt
 
-    const createUser = () => {
-        user.password = values.password;
-        user.id = uniqueId();
+    //User object constructor function
+    const generateUser = (values) => {
+        let user = {};
+        user.name = values.name;
         user.email = values.email;
-        user.login = values.name;
+        user.password = values.password;
+        user.check = values.check;
+        user.id = uniqueId();
+        user.admin = admin;
+        return user;
+    };
+
+    //function for finding if record about user is already present inside database or store
+    const findUser = (user) => {
+        let itemIndex = $users.find((n) => n.email == user.email);
+        console.log(`user  -` + user.email);
+        console.log(itemIndex);
+        if (itemIndex) {
+            return true;
+        }
+        return false;
+    };
+
+    //function for creating record about user inside store
+    const createUser = () => {
+        if (checked) {
+            let user = generateUser(initialValues);
+
+            const hashedPassword = bcrypt.hashSync(
+                values.password,
+                bcrypt.genSaltSync()
+            );
+            console.log(hashedPassword);
+
+            if (!findUser(user)) {
+                buffer.push(user);
+                users.update((p) => buffer);
+                message = `User ` + user.name + ` is created`;
+                console.log($users);
+                return true;
+            } else {
+                message = `User with this email is alredy registered`;
+            }
+        }
+        return false;
     };
 </script>
 
 <body>
-    <Sveltik {initialValues} {validate} let:isSubmitting>
+    {#if message}
+        <div class="w3-panel w3-grey">
+            <h3>{message}</h3>
+        </div>
+    {/if}
+    <Sveltik {initialValues} {validate}>
         <Form>
             <form on:submit|preventDefault>
                 <div class="w3-container">
@@ -121,8 +183,16 @@
                         <ErrorMessage name="check" as="span" />
                     </div>
                 </div>
+
                 <div class="w3-container">
-                    <button type="submit" on:click={createUser}>Sign In</button>
+                    <button
+                        type="submit"
+                        on:click={() => {
+                            if (createUser()) {
+                                window.location.href = "#/";
+                            }
+                        }}>Sign In</button
+                    >
                 </div>
             </form>
         </Form>

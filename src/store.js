@@ -48,7 +48,18 @@ export const box = writable([
     },
 ]);
 
-export const users = writable([]);
+export const users = writable([
+    {
+        name: `Testing Data User`,
+        email: `nazzzar502@gmail.com`,
+        password: `gOrgeFrom91Gu-ngle`,
+        id: 112,
+        admin: true,
+    }
+
+]);
+
+export const currentUser = writable({});
 
 function Cart(id, userId, cartPoducts) {
     id = id;

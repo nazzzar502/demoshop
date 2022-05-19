@@ -18,8 +18,11 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "bootstrap-icons": "^1.8.1",
     "sirv-cli": "^2.0.0",
+    "svelte-mail": "^0.1.1",
     "svelte-router-spa": "^6.0.3",
     "svelte-spa-router": "^3.2.0",
     "sveltik": "^0.1.16",
