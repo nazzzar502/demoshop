@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="w3-bar">
-                {#if $currentUser.email}
+                {#if $currentUser.email && $currentUser.id === product.userId}
                     <a class="w3-button" href="/product/edit/{id}">Edit</a>
                 {/if}
                 <a class="w3-button" id="cart-button" on:click={addToCart}

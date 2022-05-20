@@ -1,5 +1,6 @@
 //Import some Sveltve components
 import Products from "./shared/Products.svelte";
+import UserProducts from "./shared/UserProducts.svelte";
 import EditProduct from "./edit/EditProduct.svelte";
 import CreateProduct from "./create/CreateProduct.svelte";
 import ViewProduct from "./view/ViewProduct.svelte";
@@ -46,6 +47,11 @@ const routes = [
     },
 
     {
+        name: `myproducts`,
+        component: UserProducts
+    },
+
+    {
         name: '/user',
         component: '',
         onlyIf: { guard: userIsAdmin, redirect: '/login' },
@@ -55,7 +61,7 @@ const routes = [
         }, {
             name: `edit/:id`,
             component: EditUser
-        }]
+        },]
     },
 
     {

@@ -111,6 +111,7 @@
 
     //function for creating record about user inside store
     const createUser = () => {
+        buffer = $users;
         if (checked) {
             let user = generateUser(initialValues);
 

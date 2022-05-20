@@ -62,6 +62,7 @@
                 }}>Log out</a
             >
             <a class="w3-button" href="/products/view">Back</a>
+            <a class="w3-button" href="/myproducts">My Products</a>
         </div>
     {:else}
         <h1>There are no such users</h1>

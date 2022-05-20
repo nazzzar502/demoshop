@@ -1,11 +1,11 @@
 <script>
-    import { box } from "../store.js";
+    import { box, currentUser } from "../store.js";
     //export let products;
     let products = [];
     let name;
     let description;
     let imageSource;
-
+    let userId = $currentUser.id;
     let testvalue;
 
     function uniqueId() {
@@ -13,11 +13,13 @@
     }
 
     const createProduct = () => {
+        products = $box;
         const product = {
             name,
             description,
             imageSource,
             id: uniqueId(),
+            userId: userId,
         };
         products.push(product);
 
