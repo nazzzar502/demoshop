@@ -1,8 +1,10 @@
 <script>
     import { users } from "../store.js";
     import { onDestroy, onMount } from "svelte";
-    export let params = {};
-    const id = parseInt(params.id, 10);
+    export let currentRoute;
+      const id = parseInt(currentRoute.namedParams.id, 10);
+    let avatar;
+    let fileinput;
 
     let user;
     let removed = false;
@@ -31,6 +33,15 @@
         });
         updated = true;
     };
+
+    const onFileSelected =(e)=>{
+  let image = e.target.files[0];
+            let reader = new FileReader();
+            reader.readAsDataURL(image);
+            reader.onload = e => {
+                 avatar = e.target.result
+            };
+}
 </script>
 
 {#if removed}
@@ -99,13 +110,13 @@
                     <a class="w3-button" id="cart-button" on:click={deleteUser}
                         >Delete</a
                     >
-                    <a class="w3-button" href="/#{user.id}">Back</a>
+                    <a class="w3-button" href="/user/{user.id}">Back</a>
                 </div>
             </form>
         </body>
     {/if}
 {:else}
-    <a class="w3-button" href="/#{user.id}">Back</a>
+    <a class="w3-button" href="/user/{user.id}">Back</a>
 {/if}
 
 <style>

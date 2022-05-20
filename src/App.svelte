@@ -5,7 +5,7 @@
 	import { routes } from "./routes";
 	import { onDestroy, onMount } from "svelte";
 	import NavBar from "./shared/NavBar.svelte";
-	let tabType;
+
 </script>
 
 <main>

@@ -1,5 +1,5 @@
 //Import some Sveltve components
-import Products from "./shared/Products.svelte";
+import Products from "./shared/ProductsDebug.svelte";
 import UserProducts from "./shared/UserProducts.svelte";
 import EditProduct from "./edit/EditProduct.svelte";
 import CreateProduct from "./create/CreateProduct.svelte";

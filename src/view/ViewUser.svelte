@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="w3-bar">
-            <a class="w3-button" href="#/user/edit/{user.id}">Edit</a>
+            <a class="w3-button" href="/user/edit/{user.id}">Edit</a>
             <a
                 class="w3-button"
                 id="cart-button"
