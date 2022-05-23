@@ -1,87 +1,108 @@
 <script>
     import { createEventDispatcher } from "svelte";
+    import { category } from "../store.js";
     import { onMount } from "svelte";
-    export let tabs;
-
-    let tabType;
-    let display = false;
-
-    const dispatch = createEventDispatcher();
-
-    const handleSubmit = (e) => {
-        tabType = e;
-        dispatch(`changeTab`, tabType);
-    };
-
-    const openSidebar = () => {
-        document.getElementById("sidebar").style.display = "flex";
-    };
-
-    const closeSidebar = () => {
-        document.getElementById("sidebar").style.display = "none";
-    };
-
-    const toggleSidebar = () => {
-        if (display === true) {
-            openSidebar();
-            display = false;
+    let class1;
+    let class2;
+    let toggle = true;
+    $: {
+        if (toggle == true) {
+            class1 = "main-button-enabled";
+            class2 = "main-button-disabled";
         } else {
-            closeSidebar();
-            display = true;
+            class1 = "main-button-disabled";
+            class2 = "main-button-enabled";
         }
-    };
+    }
 </script>
 
-<div class="w3-container">
-    <div
-        class="w3-sidebar w3-bar-block w3-border-right"
-        id="sidebar"
-        style="display:none;"
+<body>
+    <input type="search" id="search" placeholder="search" />
+    <a
+        id="first"
+        class={class1}
+        href="/products/view"
+        on:click={() => {
+            toggle = true;
+        }}
     >
-        {#each tabs as item}
-            <radio
-                class="w3-bar-item w3-button"
-                id="First"
-                on:click={() => {
-                    handleSubmit(item);
-                }}>{item}</radio
-            >
-        {:else}
-            <p>No tabs</p>
+        <span class="material-symbols-outlined"> shop </span>
+        Products
+    </a>
+    <a
+        id="second"
+        class={class2}
+        href="/product/create"
+        on:click={() => {
+            toggle = false;
+        }}
+    >
+        <span class="material-symbols-outlined"> extension </span>
+        Create
+    </a>
+    <hr />
+    <div>
+        {#each $category as item (item.id)}
+            <a href="/products/view" onclick=""> {item.name} </a>
         {/each}
+        <hr />
     </div>
-</div>
-
-<i
-    id="toggle"
-    class="fa fa-arrow-right"
-    on:click={() => {
-        toggleSidebar();
-    }}
-    alt="Toggle menu"
-/>
+</body>
 
 <style>
-    i {
-        border-radius: 2px;
-        top: 0px;
-        position: sticky;
+    a > span {
+        display: inline;
+        float: left;
     }
-    #sidebar {
-        display: "none";
+    #search {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 80%;
+    }
+    .main-button-disabled,
+    .main-button-enabled {
+        width: 80%;
+        border-radius: 0px 20px 20px 0px;
+        display: inline-block;
+        text-align: center;
     }
 
-    radio {
-        width: fit-content;
-        margin-top: 3px;
-        background-color: lightgrey;
-        width: 100px;
-        border-radius: 2px;
-        font-size: small;
+    .main-button-disabled {
+        color: #727575;
+        background-color: #ffffff;
+    }
+    .main-button-disabled:hover {
+        color: rgb(115, 122, 202);
     }
 
-    radio:hover,
-    radio:active {
-        background-color: rgb(97, 89, 113);
+    .main-button-enabled {
+        background: #4b57d6;
+        color: #ffffff;
+    }
+    .main-button-enabled:hover {
+        color: #ffffff;
+    }
+    a {
+        display: block;
+        width: 90%;
+        margin: 5px;
+        padding: 5px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 500;
+        font-size: 1 rem;
+        overflow: hidden;
+        margin: 1px;
+        text-align: left;
+        color: #727575;
+
+        text-decoration: none;
+    }
+    a:hover {
+        color: rgb(115, 122, 202);
+    }
+    body {
+        background-color: rgb(242, 246, 246);
+        height: auto;
+        width: 90%;
     }
 </style>

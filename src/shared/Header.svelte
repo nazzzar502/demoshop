@@ -20,9 +20,10 @@
     .w3-bar {
         background-color: #889293;
         margin: 0 auto;
-        max-width: 960px;
+        max-width: 1500px;
         width: 100%;
-        height: auto;
+        max-height: 400px;
+        height: 100%;
     }
     .w3-bar > a {
         display: flex;

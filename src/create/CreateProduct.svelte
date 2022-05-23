@@ -1,35 +1,41 @@
 <script>
-    import { box, currentUser } from "../store.js";
+    import { category, currentUser } from "../store.js";
+    import { onMount } from "svelte";
     //export let products;
     let products = [];
     let name;
     let description;
+    let shortDesc;
     let imageSource;
     let userId = $currentUser.id;
-    let testvalue;
+    let productCategory;
 
     function uniqueId() {
         return Date.now();
     }
-
     const createProduct = () => {
-        products = $box;
+        let list = $category.find((n) => n.id === productCategory.id);
         const product = {
             name,
             description,
+            shortDesc,
             imageSource,
             id: uniqueId(),
             userId: userId,
         };
-        products.push(product);
-
-        box.update((n) => products);
-        console.log($box);
+        list.products.push(product);
     };
 </script>
 
 <body>
     <form on:submit|preventDefault={createProduct}>
+        <label for="categories">Category:</label>
+        <select name="categories" id="categories" bind:value={productCategory}>
+            {#each $category as category (category.id)}
+                <option value={category}>{category.name}</option>
+            {/each}
+        </select>
+        <br />
         <label for="fname">Product name:</label>
         <input type="text" id="fname" name="fname" bind:value={name} /><br /><br
         />
@@ -39,6 +45,13 @@
             id="desc"
             name="desc"
             bind:value={description}
+        />
+        <label for="short-desc">Short description:</label>
+        <textarea
+            class="w3-input w3-border"
+            id="short-desc"
+            name="short-desc"
+            bind:value={shortDesc}
         />
         <br />
         <label for="imgsrc">Image source:</label>

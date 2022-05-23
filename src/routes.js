@@ -7,13 +7,14 @@ import ViewProduct from "./view/ViewProduct.svelte";
 import CreateUser from "./create/CreateUser.svelte";
 import EditUser from "./edit/EditUser.svelte";
 import ViewUser from "./view/ViewUser.svelte";
+import Cathegories from "./view/Cathegories.svelte";
 import Cart from "./shared/Cart.svelte";
 import Login from "./shared/Login.svelte";
 import PublicLayout from "./PublicLayout.svelte"
 import Notfound from "./shared/Notfound.svelte";
 import { get, writable } from 'svelte/store';
 import { currentUser, session } from "./store.js";
-import { test } from "./store.js";
+
 
 
 function userIsAdmin() {
@@ -71,12 +72,13 @@ const routes = [
             {
                 name: 'view',
                 component: Products,
-                nestedRoutes: []
             },
+
             {
-                name: `:id`,
-                component: ViewProduct
+                name: `item/:id`,
+                component: ViewProduct,
             },
+
         ]
     },
 
