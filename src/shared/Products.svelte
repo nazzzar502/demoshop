@@ -3,7 +3,7 @@
     import { onDestroy, onMount } from "svelte";
     import { Router } from "svelte-router-spa";
     import { Navigate } from "svelte-router-spa";
-    import StarWidget from "./StarWidget.svelte";
+    import StarWidget from "./widgets/StarWidget.svelte";
     let placeholder = "https://www.w3schools.com/w3css/img_lights.jpg";
     let rating = 200;
     let maxRating = 500;

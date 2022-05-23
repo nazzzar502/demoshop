@@ -1,10 +1,10 @@
 <script>
-    import { box, cartProducts } from "../store.js";
+    import { cartProducts, category, activeCategoryId } from "../store.js";
     import { onDestroy, onMount } from "svelte";
+    import NavBar from "../shared/NavBar.svelte";
     import { Route } from "svelte-router-spa";
     import { currentUser } from "../store.js";
     export let currentRoute;
-
     let id = parseInt(currentRoute.namedParams.id, 10);
     let placeHolder = "https://www.w3schools.com/w3css/img_lights.jpg";
 
@@ -12,16 +12,18 @@
     let present = true;
 
     onMount(() => {
-        product = $box.find((item) => item.id === id);
+        //  console.log($activeCategoryId);
+        let list = $category.find((item) => item.id === $activeCategoryId);
+        product = list.products.find((item) => item.id === id);
+        // console.log(product);
     });
 
     const addToCart = () => {
         let reserveValue = $cartProducts.find((item) => item.id === id);
-        console.log(reserveValue);
+        // console.log(reserveValue);
         if (!reserveValue) {
             $cartProducts.push(product);
-            //cartProducts.update((n) => products);
-            console.log($cartProducts);
+            //   console.log($cartProducts);
         } else {
             alert("Test");
         }
@@ -36,6 +38,7 @@
     {/if}
     {#if present}
         {#if product}
+            <NavBar />
             <div class="w3-row">
                 <div class="w3-col m4 l3">
                     <img class="w3-image" src={placeHolder} alt="TestImage" />
