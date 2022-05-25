@@ -1,6 +1,7 @@
 <script>
     import { category, currentUser } from "../store.js";
     import { onMount } from "svelte";
+    import Editor from "@tinymce/tinymce-svelte";
     //export let products;
     let products = [];
     let name;
@@ -14,6 +15,7 @@
         return Date.now();
     }
     const createProduct = () => {
+        console.log(description);
         let list = $category.find((n) => n.id === productCategory.id);
         const product = {
             name,
@@ -40,10 +42,8 @@
         <input type="text" id="fname" name="fname" bind:value={name} /><br /><br
         />
         <label for="desc">Product description:</label>
-        <textarea
-            class="w3-input w3-border"
-            id="desc"
-            name="desc"
+        <Editor
+            apiKey="0qvesdf8cerju08tig425usiegdr2hbtwgdknq463vtagfus"
             bind:value={description}
         />
         <label for="short-desc">Short description:</label>

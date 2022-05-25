@@ -7,7 +7,7 @@ import ViewProduct from "./view/ViewProduct.svelte";
 import CreateUser from "./create/CreateUser.svelte";
 import EditUser from "./edit/EditUser.svelte";
 import ViewUser from "./view/ViewUser.svelte";
-import Cathegories from "./view/Cathegories.svelte";
+import CathegoriesView from "./view/CathegoriesView.svelte";
 import Cart from "./shared/Cart.svelte";
 import Login from "./shared/Login.svelte";
 import PublicLayout from "./PublicLayout.svelte"
@@ -51,6 +51,12 @@ const routes = [
         name: `myproducts`,
         component: UserProducts
     },
+
+    {
+        name: `category/:id`,
+        component: CathegoriesView
+    },
+
 
     {
         name: '/user',

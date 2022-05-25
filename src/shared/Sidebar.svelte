@@ -1,7 +1,5 @@
 <script>
-    import { createEventDispatcher } from "svelte";
     import { category } from "../store.js";
-    import { onMount } from "svelte";
     let class1;
     let class2;
     let toggle = true;
@@ -17,35 +15,37 @@
 </script>
 
 <body>
-    <input type="search" id="search" placeholder="search" />
-    <a
-        id="first"
-        class={class1}
-        href="/products/view"
-        on:click={() => {
-            toggle = true;
-        }}
-    >
-        <span class="material-symbols-outlined"> shop </span>
-        Products
-    </a>
-    <a
-        id="second"
-        class={class2}
-        href="/product/create"
-        on:click={() => {
-            toggle = false;
-        }}
-    >
-        <span class="material-symbols-outlined"> extension </span>
-        Create
-    </a>
-    <hr />
-    <div>
-        {#each $category as item (item.id)}
-            <a href="/products/view" onclick=""> {item.name} </a>
-        {/each}
+    <div class="sidebar">
+        <input type="search" id="search" placeholder="search" />
+        <a
+            id="first"
+            class={class1}
+            href="/products/view"
+            on:click={() => {
+                toggle = true;
+            }}
+        >
+            <span class="material-symbols-outlined"> shop </span>
+            Products
+        </a>
+        <a
+            id="second"
+            class={class2}
+            href="/product/create"
+            on:click={() => {
+                toggle = false;
+            }}
+        >
+            <span class="material-symbols-outlined"> extension </span>
+            Create
+        </a>
         <hr />
+        <div>
+            {#each $category as item (item.id)}
+                <a href="/category/{item.id}"> {item.name} </a>
+            {/each}
+            <hr />
+        </div>
     </div>
 </body>
 
@@ -100,9 +100,11 @@
     a:hover {
         color: rgb(115, 122, 202);
     }
-    body {
+    .sidebar {
         background-color: rgb(242, 246, 246);
         height: auto;
+        padding: 5px;
         width: 90%;
+        height: 100vh;
     }
 </style>

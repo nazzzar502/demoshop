@@ -3,7 +3,6 @@
 	import { Route, Router } from "svelte-router-spa";
 	import Sidebar from "./shared/Sidebar.svelte";
 	import { routes } from "./routes";
-	import { onDestroy, onMount } from "svelte";
 </script>
 
 <main>

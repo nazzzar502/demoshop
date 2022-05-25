@@ -1,10 +1,14 @@
 <script>
     import StarWidget from "../shared/widgets/StarWidget.svelte";
     import HoverWidget from "../shared/widgets/HoverWidget.svelte";
-
-    export let list;
-
     let placeholder = "https://www.w3schools.com/w3css/img_lights.jpg";
+    import { onMount, onDestroy } from "svelte";
+    import { category } from "../store.js";
+
+    export let currentRoute;
+
+    let id = parseInt(currentRoute.namedParams.id, 10);
+    let list = $category.find((item) => item.id === id);
 </script>
 
 <body>

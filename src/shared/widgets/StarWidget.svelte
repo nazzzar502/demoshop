@@ -1,6 +1,8 @@
 <script>
-    export let rating;
-    export let maxRating;
+    export let item;
+
+    let rating = Math.round(item.rating, 10);
+    let maxRating = 1000;
     import { onMount } from "svelte";
     let stars = [];
     const setRaiting = () => {
@@ -27,6 +29,9 @@
 </body>
 
 <style>
+    body {
+        max-width: fit-content;
+    }
     #widget {
         display: flex;
         flex-flow: left;

@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 
-
+export const activeTab = writable();
 
 export const cartProducts = writable([]);
 export const activeCategoryId = writable();
@@ -13,11 +13,18 @@ export const category = writable([
         userId: 221,
         products: [{
             name: `Testing Data Product2`,
-            description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus sit amet lacus suscipit tincidunt. Proin ut diam nec lectus porttitor fringilla. Etiam tincidunt dolor eget nibh tristique sodales. Integer in dui vitae nunc placerat scelerisque vitae sed tellus. Pellentesque ut lacinia est. Suspendisse nec leo maximus, venenatis lorem vel, egestas lectus`,
-            shortDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+            description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel lorem varius augue fermentum congue. Aenean pharetra suscipit tortor, vitae semper massa efficitur vitae. Nunc eget dolor at leo tristique pretium ac id purus. In dignissim dolor nec lectus ultricies, a scelerisque augue efficitur. Quisque ultricies malesuada aliquet. Sed pulvinar tincidunt leo, vel vehicula urna feugiat eu. Phasellus pulvinar libero leo, eget bibendum turpis iaculis sit amet. Duis sit amet orci est.
+
+            Duis imperdiet ut massa in sodales. Praesent vitae libero sed nisi rutrum sagittis quis et turpis. Donec vestibulum nisi quis lacus ultrices, in auctor sem facilisis. Fusce a placerat diam, ut malesuada tortor. Sed bibendum egestas nunc, suscipit imperdiet purus ornare dictum. Integer accumsan ac sem non ultrices. Phasellus accumsan, erat eget volutpat cursus, quam enim gravida purus, non commodo justo nunc ac nulla. Sed vitae tristique ante, quis ultrices arcu. Nam semper nulla et porta interdum.
+            
+            Sed malesuada justo neque, in faucibus mi accumsan sed. Fusce egestas arcu ac dolor ultrices scelerisque. Cras lacinia nunc eu enim sollicitudin, vel suscipit nisi ornare. Donec venenatis turpis in tortor consectetur venenatis. Aliquam tempus a metus non tempus. Nulla eget malesuada nisl, eget rutrum urna. Nunc nec convallis sem. Aenean pretium, sem sed molestie auctor, dolor augue viverra nulla, aliquet vestibulum ex enim vel leo. Vestibulum faucibus turpis sit amet placerat tincidunt. Morbi fermentum feugiat lorem, id pulvinar justo semper eget.
+            
+            Integer ex tortor, lobortis ut sodales vitae, gravida sit amet sem. Ut consectetur, purus vitae porttitor porta, felis turpis sollicitudin tellus, accumsan pellentesque lacus turpis vel magna. Nunc consectetur urna eu augue laoreet mollis. Aenean nec convallis ipsum. Quisque porta dolor erat, vel eleifend velit vestibulum vitae. Sed congue quam quis ex euismod, ut lacinia augue gravida. Quisque sollicitudin eu nisl venenatis pellentesque. Quisque ipsum eros, ultrices vel ultricies et, efficitur ut sapien. Aenean congue erat ut metus eleifend, id fermentum tortor mattis. Cras dignissim sagittis accumsan. Cras suscipit laoreet posuere. Nam sagittis ultricies turpis, nec maximus nisl. Proin a lobortis mauris.`,
+            shortDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
             imageSource: `none`,
             id: 2123,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product3`,
@@ -26,6 +33,7 @@ export const category = writable([
             imageSource: `none`,
             id: 31231,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product4`,
@@ -34,6 +42,7 @@ export const category = writable([
             imageSource: `none`,
             id: 4213123,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product5`,
@@ -42,6 +51,7 @@ export const category = writable([
             imageSource: `none`,
             id: 5213123,
             userId: 112,
+            rating: Math.random() * 1000
         },
         ]
     },
@@ -57,6 +67,7 @@ export const category = writable([
             imageSource: `none`,
             id: 31231,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product7`,
@@ -65,6 +76,7 @@ export const category = writable([
             imageSource: `none`,
             id: 72342356123123,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product8`,
@@ -73,6 +85,7 @@ export const category = writable([
             imageSource: `none`,
             id: 8123858562345123,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product9`,
@@ -81,6 +94,7 @@ export const category = writable([
             imageSource: `none`,
             id: 911246756812233123,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product9`,
@@ -89,6 +103,7 @@ export const category = writable([
             imageSource: `none`,
             id: 9324233432546575668,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product9`,
@@ -97,6 +112,7 @@ export const category = writable([
             imageSource: `none`,
             id: 91323245634645223,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product9`,
@@ -105,6 +121,7 @@ export const category = writable([
             imageSource: `none`,
             id: 911121231231231233454,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product9`,
@@ -113,6 +130,7 @@ export const category = writable([
             imageSource: `none`,
             id: 913213123423467,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product9`,
@@ -121,6 +139,7 @@ export const category = writable([
             imageSource: `none`,
             id: 23122131231,
             userId: 112,
+            rating: Math.random() * 1000
         },
         ]
     },
@@ -136,6 +155,7 @@ export const category = writable([
             imageSource: `none`,
             id: 589475,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product7`,
@@ -144,6 +164,7 @@ export const category = writable([
             imageSource: `none`,
             id: 5894755623,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product8`,
@@ -152,6 +173,7 @@ export const category = writable([
             imageSource: `none`,
             id: 58947556233235,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product9`,
@@ -160,6 +182,7 @@ export const category = writable([
             imageSource: `none`,
             id: 58947556231233235,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product9`,
@@ -168,6 +191,7 @@ export const category = writable([
             imageSource: `none`,
             id: 58947556238432,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product9`,
@@ -176,6 +200,7 @@ export const category = writable([
             imageSource: `none`,
             id: 58947556235767890,
             userId: 112,
+            rating: Math.random() * 1000
         },
         {
             name: `Testing Data Product9`,
@@ -184,6 +209,7 @@ export const category = writable([
             imageSource: `none`,
             id: 5894755623368341234,
             userId: 112,
+            rating: Math.random() * 1000
         },
         ]
     },

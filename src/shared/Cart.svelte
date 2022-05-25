@@ -1,6 +1,8 @@
 <script>
-    import { onDestroy, onMount } from "svelte";
+    import { onMount } from "svelte";
     import { cartProducts, box } from "../store.js";
+    import StarWidget from "../shared/widgets/StarWidget.svelte";
+    import HoverWidget from "../shared/widgets/HoverWidget.svelte";
 
     let placeholder = "https://www.w3schools.com/w3css/img_lights.jpg";
 
@@ -27,7 +29,7 @@
 <body>
     {#if $cartProducts}
         {#each $cartProducts as item (item.id)}
-            <div class="w3-col s4 w3-center">
+            <!--div class="w3-col s4 w3-center">
                 <div class="w3-card-2">
                     <header class="w3-container w3-grey">
                         <h3>{item.name}</h3>
@@ -51,6 +53,33 @@
                         </div>
                     </div>
                 </div>
+            </div-->
+            <hr style="color:black;" />
+            <div class="w3-panel">
+                <span>
+                    <div class="w3-col s4 w3-center">
+                        <div class="w3-card-2">
+                            <div class="item-header">
+                                <header class="w3-container ">
+                                    <h3>{item.name}</h3>
+                                </header>
+                                <button
+                                    class="del-button material-symbols-outlined"
+                                    on:click={deleteFromCart(item.id)}
+                                >
+                                    delete
+                                </button>
+                            </div>
+
+                            <StarWidget {item} />
+                            <img
+                                class="w3-image"
+                                src={placeholder}
+                                alt="TestImage"
+                            />
+                        </div>
+                    </div>
+                </span>
             </div>
         {/each}
     {/if}
@@ -59,36 +88,33 @@
 <style>
     .w3-col {
         padding: 3px;
-        max-width: 400px;
+        max-width: 250px;
         height: auto;
         padding: 10px;
+        text-decoration: none;
+    }
+    .w3-container {
+        max-height: 50px;
+        overflow: hidden;
     }
     h3 {
-        color: #e3e8eb;
+        font-family: "Roboto", sans-serif;
+        font-weight: 600;
+        font-size: small;
+        overflow: hidden;
+        margin: 1px;
+        text-overflow: ellipsis;
+        text-align: left;
+        color: #484a4a;
     }
-
-    .w3-bar {
-        background-color: #e3e8eb;
-        margin: 0 auto;
-        max-width: auto;
-        width: 100%;
-        height: auto;
+    .item-header {
+        display: flex;
+        flex-direction: row;
+        flex-flow: row;
     }
-    .w3-bar > a {
-        display: inline-block;
-        color: rgb(230, 218, 218);
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        padding: 8px 24px;
-    }
-
-    /* Change the link color to #111 (black) on hover */
-    .w3-bar > a:hover {
-        border-radius: 1px;
-    }
-    #cart-button {
-        background-color: #e3e8eb;
-        color: #474745;
+    .del-button {
+        padding: 2px;
+        border: none;
+        background-color: transparent;
     }
 </style>
